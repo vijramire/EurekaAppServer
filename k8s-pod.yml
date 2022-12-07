@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name:  appservereureka-rs
+  labels:
+    app: appservereureka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appservereureka
+  template:
+    metadata:
+      name: appservereureka
+      labels:
+        app: appservereureka
+    spec:
+      containers:
+        - name: appservereureka
+          image: vijramire/appserver
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
